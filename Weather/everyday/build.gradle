@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "cc.yfree.yangf.everyday"
+        minSdkVersion 19
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //底部导航栏依赖
+    //图标依赖
+    //图标库
+    //圆角imageview
+    //64K 错误
+    //cardview及另外一个控件
+    //图表库
+    //tab
+    //材质提示框
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
+    compile 'com.mikepenz:iconics-core:2.7.2@aar'
+    compile 'com.mikepenz:google-material-typeface:2.2.0.3.original@aar'
+    compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.2@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.6.0.3@aar'
+    compile 'com.mikepenz:octicons-typeface:3.2.0.2@aar'
+    compile 'com.mikepenz:meteocons-typeface:1.1.0.2@aar'
+    compile 'com.mikepenz:community-material-typeface:1.5.54.2@aar'
+    compile 'com.mikepenz:weather-icons-typeface:2.0.10.2@aar'
+    compile 'com.mikepenz:typeicons-typeface:2.0.7.2@aar'
+    compile 'com.mikepenz:entypo-typeface:1.0.0.2@aar'
+    compile 'com.mikepenz:devicon-typeface:2.0.0.2@aar'
+    compile 'com.mikepenz:foundation-icons-typeface:3.0.0.2@aar'
+    compile 'com.mikepenz:ionicons-typeface:2.0.1.2@aar'
+    compile 'com.pkmmte.view:circularimageview:1.1'
+    compile 'com.android.support:multidex:1.+'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    compile 'io.karim:materialtabs:2.0.2'
+    compile 'com.blunderer:materialdesignlibrary:2.0.4'
+//    compile 'com.afollestad.material-dialogs:core:0.9.0.2'
+//    compile 'me.drakeet.materialdialog:library:1.3.1'
+    testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1b82d2</color>
+    <color name="colorPrimaryDark">#1b82d2</color>
+    <color name="colorAccent">#1976D2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorHomeStatus">#1976D2</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondry_text">#757575</color>
+    <color name="icon">#5e5e5e</color>
+    <color name="didi">#FF8900</color>
+    <color name="green">#4CAF50</color>
+    <color name="rain">#00BCD4</color>
+    <color name="yellow">#FBC02D</color>
+    <color name="gray">#757575</color>
+    <color name="blue">#1b82d2</color>
+    <color name="bgcolor">#F7F7F7</color>
+    <color name="weatherBar1">#3CB9D6</color>
+    <color name="weatherBar2">#5EA2DB</color>
+    <color name="black">#000000</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="divider2">#77ffffff</color>
+    <color name="black_bg">#2A2A2C</color>
+    <color name="touming">#00ffffff</color>
+    <color name="Btouming">#70000000</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

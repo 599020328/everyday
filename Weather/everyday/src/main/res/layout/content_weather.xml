@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="cc.yfree.yangf.everyday.WeatherActivity"
+    tools:showIn="@layout/activity_weather">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:background="@color/white">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <lecho.lib.hellocharts.view.LineChartView
+                       android:id="@+id/lvc_main"
+                       android:layout_width="800dp"
+                       android:layout_height="130dp"
+                       android:layout_gravity="center"
+                       android:layout_margin="20dp"
+                       android:transitionName="line"/>
+               </LinearLayout>
+            </HorizontalScrollView>
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#E2E2E2"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/large_text"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</android.support.v4.widget.NestedScrollView>
