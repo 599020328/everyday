@@ -61,6 +61,10 @@
         <activity
             android:name=".AnalyActivity"
             android:label="@string/title_activity_analy"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LineActivity"
+            android:label="@string/title_activity_line"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

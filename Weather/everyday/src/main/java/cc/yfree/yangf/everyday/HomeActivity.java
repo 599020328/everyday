@@ -1,5 +1,6 @@
 package cc.yfree.yangf.everyday;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
     private String TAG = HomeActivity.class.getSimpleName();
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    private BottomNavigationBar bottomNavigationBar;
+    public static Activity HomeActivity;
 
 
     @Override
@@ -38,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         //图标支持
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
+        HomeActivity = this;
         setContentView(R.layout.drawlayout_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
          /*Bottom bar*/
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         //设置模式和风格
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
@@ -138,6 +142,11 @@ public class HomeActivity extends AppCompatActivity {
 //        MyAdapter adapter = new MyAdapter(initDate());
 //        //设置Adapter
 //        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

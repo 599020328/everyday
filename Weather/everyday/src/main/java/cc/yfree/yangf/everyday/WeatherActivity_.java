@@ -1,5 +1,6 @@
 package cc.yfree.yangf.everyday;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,6 +44,7 @@ public class WeatherActivity_ extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    public static Activity WeatherActivity;
 
     TodayFragment todayFragment = new TodayFragment();
     FifteenFragment fifteenFragment = new FifteenFragment();
@@ -54,6 +56,7 @@ public class WeatherActivity_ extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
+        WeatherActivity = this;
         setContentView(R.layout.drawerlayout_weather_);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -110,4 +110,8 @@
     <string name="fabs_todo">{cmd_plus}</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="title_activity_analy">AnalyActivity</string>
+    <string name="title_activity_line">LineActivity</string>
+    <string name="car_time">{cmd_car}  29分钟</string>
+    <string name="train_time">{cmd_train}  2时1分钟</string>
+    <string name="walk_time">{cmd_walk}  58分钟</string>
 </resources>

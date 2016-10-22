@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,37 +40,83 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-   <LinearLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="bottom|end"
-       android:orientation="vertical">
 
-       <!--定位   -->
-       <android.support.design.widget.FloatingActionButton
-           android:id="@+id/fab1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="end|bottom"
-           android:layout_marginRight="16dp"
-           android:layout_marginBottom="16dp"
-           android:src="@drawable/ic_map_gps_fixed"
-           app:borderWidth="0dp"
-           app:backgroundTint="#FFFFFF"
-           app:rippleColor="#4c000000" />
 
-       <!--查看附近的车-->
-       <android.support.design.widget.FloatingActionButton
-           android:id="@+id/fab2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="end|bottom"
-           android:layout_marginRight="16dp"
-           android:layout_marginBottom="16dp"
-           android:src="@drawable/ic_map_taxi"
-           app:borderWidth="0dp"
-           app:backgroundTint="#1976D2"
-           app:rippleColor="#4c000000" />
-   </LinearLayout>
+    <Button
+        android:id="@+id/select"
+        android:layout_marginTop="184dp"
+        android:layout_marginLeft="110dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击选择\\取消选择五医院"/>
 
-</FrameLayout>
+    <RelativeLayout
+        android:id="@+id/bottom_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-81dp">
+        <LinearLayout
+            android:id="@+id/floaticon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <!--定位   -->
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_map_gps_fixed"
+                app:borderWidth="0dp"
+                app:backgroundTint="#FFFFFF"
+                app:rippleColor="#4c000000" />
+
+            <!--查看附近的车-->
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_map_taxi"
+                app:borderWidth="0dp"
+                app:backgroundTint="#1976D2"
+                app:rippleColor="#4c000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:elevation="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第五人民医院"
+                android:textSize="18dp"
+                android:textColor="@color/primary_text"
+                android:paddingBottom="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15km"
+                android:textSize="16dp"
+                android:textColor="@color/secondry_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

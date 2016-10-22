@@ -1,5 +1,6 @@
 package cc.yfree.yangf.everyday;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -15,13 +16,16 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.pkmmte.view.CircularImageView;
 
@@ -49,6 +53,8 @@ public class MapActivity extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
+    public static Activity MapActivity;
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -78,7 +84,7 @@ public class MapActivity extends AppCompatActivity {
 //            mControlsView.setVisibility(View.VISIBLE);
         }
     };
-    private boolean mVisible;
+    private boolean mVisible,isShow;
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
@@ -89,6 +95,9 @@ public class MapActivity extends AppCompatActivity {
     private FloatingActionButton fab1;
     private FloatingActionButton fab2;
     private InputMethodManager inputmanger;
+    private View mbottom,floaticon,bottomView;
+    private Button mbutton;
+    private ObjectAnimator animator;
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
@@ -107,10 +116,11 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        MapActivity = this;
         setContentView(R.layout.drawerlayout_map);
 
         mVisible = true;
+        isShow   = false;
 //        mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
         mEditText = (EditText)findViewById(R.id.map_input);
@@ -118,7 +128,14 @@ public class MapActivity extends AppCompatActivity {
 
         fab1 = (FloatingActionButton)findViewById(R.id.fab1);
         fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        floaticon = findViewById(R.id.floaticon);
+        mbottom = findViewById(R.id.bottom);
+        bottomView = findViewById(R.id.bottom_all);
         inputmanger = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        mbutton = (Button)findViewById(R.id.select);
+
+
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -162,8 +179,24 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
+        mbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleSelect();
+            }
+        });
+
+
     }
 
+    /*销毁其他activity*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Activity.onDestory()
+        getLocalActivityManager().destroyActivity("string id", true);
+    }
     /*默认隐藏*/
 //    @Override
 //    protected void onPostCreate(Bundle savedInstanceState) {
@@ -175,7 +208,7 @@ public class MapActivity extends AppCompatActivity {
 //        delayedHide(100);
 //    }
 
-    /*默认取消焦点*/
+    /*默认取消焦点,隐藏bottom*/
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -191,6 +224,29 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+    private void toggleSelect() {
+        if (isShow) {
+            WindowManager wm = this.getWindowManager();
+            int height = wm.getDefaultDisplay().getHeight();
+            float heightChange = height*0.116f;
+            animator = ObjectAnimator.ofFloat(bottomView, "translationY",  0);
+            animator.setDuration(400);
+            animator.start();
+            isShow = false;
+        } else {
+            WindowManager wm = this.getWindowManager();
+            int height = wm.getDefaultDisplay().getHeight();
+            float heightChange = height*0.116f;
+            animator = ObjectAnimator.ofFloat(bottomView, "translationY", -heightChange);
+            animator.setDuration(400);
+            animator.start();
+            if (!mVisible) {
+                show();
+            }
+            isShow = true;
+        }
+    }
+
     private void hide() {
 
 //        mControlsView.setVisibility(View.GONE);
@@ -199,9 +255,19 @@ public class MapActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_down_to_up);
         mEditText.startAnimation(animation);
         mEditText.setVisibility(View.GONE);
-        fab1.setVisibility(View.GONE);
-        fab2.setVisibility(View.GONE);
+        animator = ObjectAnimator.ofFloat(floaticon, "alpha", 1f, 0f);
+        animator.setDuration(300);
+        animator.start();
 
+        if (isShow) {
+            WindowManager wm = this.getWindowManager();
+            int height = wm.getDefaultDisplay().getHeight();
+            float heightChange = height * 0.116f;
+            animator = ObjectAnimator.ofFloat(bottomView, "translationY", 0);
+            animator.setDuration(400);
+            animator.start();
+            isShow = false;
+        }
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -220,11 +286,19 @@ public class MapActivity extends AppCompatActivity {
         mEditText.startAnimation(animation);
         mEditText.setVisibility(View.VISIBLE);
 
-        animation = AnimationUtils.loadAnimation(this, R.anim.float_show);
-        fab1.startAnimation(animation);
-        fab2.startAnimation(animation);
-        fab1.setVisibility(View.VISIBLE);
-        fab2.setVisibility(View.VISIBLE);
+        animator = ObjectAnimator.ofFloat(floaticon, "alpha", 0f, 1f);
+        animator.setDuration(300);
+        animator.start();
+
+//        if (isShow){
+//            RelativeLayout.LayoutParams lp1 = new RelativeLayout.LayoutParams(
+//                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//            lp1.addRule(RelativeLayout.ABOVE, R.id.bottom);//设置在bottom上方
+//            lp1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);//设置贴紧右边
+//            floaticon.setLayoutParams(lp1);//动态改变布局
+//        }
+
+
 
         mVisible = true;
 

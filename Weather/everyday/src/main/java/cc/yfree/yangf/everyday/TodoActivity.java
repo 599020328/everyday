@@ -1,5 +1,6 @@
 package cc.yfree.yangf.everyday;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -35,14 +36,17 @@ public class TodoActivity extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    public static Activity TodoActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TodoActivity = this;
         setContentView(R.layout.drawlayout_todo);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
