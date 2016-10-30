@@ -48,7 +48,6 @@ public class WeatherActivity_ extends AppCompatActivity {
 
     TodayFragment todayFragment = new TodayFragment();
     FifteenFragment fifteenFragment = new FifteenFragment();
-    AnalysisFragment analysisFragment = new AnalysisFragment();
     NextrainFragment nextrainFragment = new NextrainFragment();
     BestFragment bestFragment = new BestFragment();
 

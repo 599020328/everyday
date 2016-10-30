@@ -190,13 +190,12 @@ public class MapActivity extends AppCompatActivity {
     }
 
     /*销毁其他activity*/
-
     @Override
     protected void onResume() {
         super.onResume();
-        Activity.onDestory()
-        getLocalActivityManager().destroyActivity("string id", true);
     }
+
+
     /*默认隐藏*/
 //    @Override
 //    protected void onPostCreate(Bundle savedInstanceState) {
@@ -230,6 +229,7 @@ public class MapActivity extends AppCompatActivity {
             int height = wm.getDefaultDisplay().getHeight();
             float heightChange = height*0.116f;
             animator = ObjectAnimator.ofFloat(bottomView, "translationY",  0);
+            animator = ObjectAnimator.ofFloat(bottomView, "translationY",  0);
             animator.setDuration(400);
             animator.start();
             isShow = false;
@@ -260,9 +260,6 @@ public class MapActivity extends AppCompatActivity {
         animator.start();
 
         if (isShow) {
-            WindowManager wm = this.getWindowManager();
-            int height = wm.getDefaultDisplay().getHeight();
-            float heightChange = height * 0.116f;
             animator = ObjectAnimator.ofFloat(bottomView, "translationY", 0);
             animator.setDuration(400);
             animator.start();

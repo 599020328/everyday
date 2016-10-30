@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="cc.yfree.yangf.everyday.TaxiFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:visibility="gone"/>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/distance_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-34dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:cardElevation="1dp"
+        app:contentPaddingTop="8dp"
+        app:contentPaddingBottom="8dp"
+        app:contentPaddingLeft="24dp"
+        app:contentPaddingRight="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距离你"
+                android:textSize="14sp"
+                android:gravity="end"/>
+            <TextView
+                android:id="@+id/distance_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3Km"
+                android:textColor="@color/yellow"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大约"
+                android:textSize="14sp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2分钟"
+                android:textSize="14sp"
+                android:textColor="@color/yellow"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/cannel"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="取消"
+                android:textColor="@color/secondry_text"
+                android:textSize="14sp"
+                android:gravity="end"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/floaticon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
+        android:orientation="vertical">
+
+        <!--定位   -->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_phone"
+            app:borderWidth="0dp"
+            app:backgroundTint="#FFFFFF"
+            app:rippleColor="#4c000000" />
+
+        <!--查看附近的车-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_map_taxi"
+            app:borderWidth="0dp"
+            app:backgroundTint="#1976D2"
+            app:rippleColor="#4c000000" />
+    </LinearLayout>
+
+</RelativeLayout>

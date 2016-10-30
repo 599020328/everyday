@@ -18,6 +18,7 @@
     <color name="weatherBar1">#3CB9D6</color>
     <color name="weatherBar2">#5EA2DB</color>
     <color name="black">#000000</color>
+    <color name="mdivider">#e0e0e0</color>
     <color name="divider">#BDBDBD</color>
     <color name="divider2">#77ffffff</color>
     <color name="black_bg">#2A2A2C</color>

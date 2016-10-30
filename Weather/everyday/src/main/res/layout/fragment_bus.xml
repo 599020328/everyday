@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="cc.yfree.yangf.everyday.BusFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="@string/dummy_content"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/floaticon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
+        android:orientation="vertical">
+
+        <!--查看附近的车-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_bus"
+            app:borderWidth="0dp"
+            app:backgroundTint="#1976D2"
+            app:rippleColor="#4c000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/car_bus_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/map_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_map_edit"
+            android:hint="输入你的目的地"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:drawableRight="@drawable/ic_search"
+            android:drawablePadding="24dp"
+            android:elevation="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="-60dp"
+            android:padding="14dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

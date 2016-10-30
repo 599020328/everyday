@@ -17,12 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.blunderer.materialdesignlibrary.views.CardView;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.pkmmte.view.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         HomeActivity = this;
         setContentView(R.layout.drawlayout_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        View carAndBus = findViewById(R.id.takeCar);
+        View Analyse = findViewById(R.id.analysis);
         setSupportActionBar(toolbar);
 
 //        /*设置iconfont*/
@@ -79,6 +84,27 @@ public class HomeActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.ic_menu_map, "地图"))
                 .setFirstSelectedPosition(0)
                 .initialise();
+
+        /*“快速上车”监听*/
+        carAndBus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mintent = new Intent();
+                mintent.setClass(HomeActivity.this, CarAndBus.class);
+                startActivity(mintent);
+            }
+        });
+
+         /*“一键分析”监听*/
+        Analyse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mintent = new Intent();
+                mintent.setClass(HomeActivity.this, AnalyseActivity.class);
+                startActivity(mintent);
+            }
+        });
+
         //设置监听器
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
             public void onTabSelected(int position) {
@@ -117,6 +143,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onTabReselected(int position) {
             }
         });
+        View nextTodo = findViewById(R.id.nextTodo);
+        ImageView = nextTodo.
+
+        Picasso.with(context).load(R.drawable.landing_screen).into(imageView1);
+        Picasso.with(context)
+                .load(url)
+                .resize(50, 50)
+                .centerCrop()
+                .into(imageView);
         //设置默认Fragment
 //        setDefaultFragment();
 

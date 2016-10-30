@@ -59,12 +59,16 @@
             android:label="@string/title_activity_add"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AnalyActivity"
-            android:label="@string/title_activity_analy"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".LineActivity"
             android:label="@string/title_activity_line"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CarAndBus"
+            android:label="@string/title_activity_car_and_bus"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AnalyseActivity"
+            android:label="@string/title_activity_analyse"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

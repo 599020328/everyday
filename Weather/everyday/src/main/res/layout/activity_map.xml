@@ -14,6 +14,7 @@
         android:background="@drawable/shape_map_edit"
         android:hint="输入你的目的地"
         android:imeOptions="actionSearch"
+        android:singleLine="true"
         android:drawableLeft="@drawable/ic_map_dehaze"
         android:drawableRight="@drawable/ic_map_mic"
         android:drawablePadding="24dp"
@@ -55,9 +56,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginBottom="-81dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="-81dp">
+        android:layout_alignParentStart="true">
         <LinearLayout
             android:id="@+id/floaticon"
             android:layout_width="wrap_content"
