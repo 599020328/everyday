@@ -221,36 +221,16 @@ public class TodoActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 12;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "一月";
+                    return "未完成";
                 case 1:
-                    return "二月";
-                case 2:
-                    return "三月";
-                case 3:
-                    return "四月";
-                case 4:
-                    return "五月";
-                case 5:
-                    return "六月";
-                case 6:
-                    return "七月";
-                case 7:
-                    return "八月";
-                case 8:
-                    return "九月";
-                case 9:
-                    return "十月";
-                case 10:
-                    return "十一月";
-                case 11:
-                    return "十二月";
+                    return "已完成";
             }
             return null;
         }

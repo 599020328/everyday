@@ -15,7 +15,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,14 @@ public class FifteenFragment extends Fragment {
         //设置Adapter
         mRecyclerView.setAdapter(new MyAdapter(initDate()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
+
+        /*首页cardview图片相关*/
+        ImageView today_img = (ImageView)view.findViewById(R.id.fifteen_img);
+        Picasso.with(getActivity())
+                .load(R.drawable.yun)
+                .fit()
+                .into(today_img);
+
         return  view;
     }
 

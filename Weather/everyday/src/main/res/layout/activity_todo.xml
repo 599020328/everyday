@@ -27,7 +27,7 @@
 
         <io.karim.MaterialTabs
             android:id="@+id/material_tabs"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="?attr/colorPrimary"
             app:mtIndicatorColor="#ffffffff"

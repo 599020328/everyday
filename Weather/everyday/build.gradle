@@ -23,22 +23,33 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //底部导航栏依赖
+
     //图标依赖
+
     //图标库
+
     //圆角imageview
+
     //64K 错误
+
     //cardview及另外一个控件
+
     //图表库
+
     //tab
+
     //材质提示框
+
     // picasso图片加载库
+
     //    compile 'com.afollestad.material-dialogs:core:0.9.0.2'
-//    compile 'me.drakeet.materialdialog:library:1.3.1'
+
+    //    compile 'me.drakeet.materialdialog:library:1.3.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
@@ -65,4 +76,12 @@ dependencies {
     compile 'com.blunderer:materialdesignlibrary:2.0.4'
     compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
+    //百度API
+    compile files('libs/baidumapapi_base_v4_0_0.jar')
+    compile files('libs/baidumapapi_cloud_v4_0_0.jar')
+    compile files('libs/baidumapapi_map_v4_0_0.jar')
+    compile files('libs/baidumapapi_radar_v4_0_0.jar')
+    compile files('libs/baidumapapi_search_v4_0_0.jar')
+    compile files('libs/baidumapapi_util_v4_0_0.jar')
+    compile files('libs/locSDK_6.13.jar')
 }

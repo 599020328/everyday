@@ -15,8 +15,12 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="276.5dp"
-                android:background="@drawable/todo13"
                 android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/best_img1"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -166,8 +170,12 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="276.5dp"
-                android:background="@drawable/todo3"
                 android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/best_img2"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -317,8 +325,12 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="276.5dp"
-                android:background="@drawable/todo1"
                 android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/best_img3"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

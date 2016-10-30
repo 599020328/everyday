@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -143,16 +144,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onTabReselected(int position) {
             }
         });
-        View nextTodo = findViewById(R.id.nextTodo);
-        ImageView = nextTodo.
 
-        Picasso.with(context).load(R.drawable.landing_screen).into(imageView1);
-        Picasso.with(context)
-                .load(url)
-                .resize(50, 50)
-                .centerCrop()
-                .into(imageView);
-        //设置默认Fragment
+        /*首页cardview图片相关*/
+        ImageView nextTodo_img = (ImageView)findViewById(R.id.nextTodo_img);
+        Picasso.with(this)
+                .load(R.drawable.sunny)
+                .fit()
+                .into(nextTodo_img);
+
+//        //设置默认Fragment
 //        setDefaultFragment();
 
 

@@ -25,5 +25,17 @@
     <color name="touming">#00ffffff</color>
     <color name="Btouming">#70000000</color>
 
+    <!-- CardView -->
+    <color name="mdl_cardview_background">#fafafa</color>
+    <color name="mdl_cardview_image_left_title_color">#212121</color>
+    <color name="mdl_cardview_image_top_title_color">#ffffff</color>
+    <color name="mdl_cardview_normal_description_color">#212121</color>
+    <color name="mdl_cardview_image_left_description_color">#757575</color>
+    <color name="mdl_cardview_image_top_description_color">#212121</color>
+    <color name="mdl_cardview_normal_button_color">#212121</color>
+    <color name="mdl_cardview_highlight_button_color">#ffab40</color>
+    <color name="mdl_cardview_normal_button_ripple_color">#66999999</color>
+    <color name="mdl_cardview_separator_color">#dcdcdc</color>
+
     <color name="black_overlay">#66000000</color>
 </resources>

@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +84,14 @@ public class TodayFragment extends Fragment {
         getLayoutId();
         initView();
         initData();
+
+        /*首页cardview图片相关*/
+        ImageView today_img = (ImageView)view.findViewById(R.id.today_img);
+        Picasso.with(getActivity())
+                .load(R.drawable.todo8)
+                .fit()
+                .into(today_img);
+
         return view;
     }
 

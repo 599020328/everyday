@@ -56,13 +56,12 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="{faw_taxi}"
+                    <com.mikepenz.iconics.view.IconicsImageView
                         android:id="@+id/quick1"
-                        android:textSize="30sp"
-                        android:textColor="@color/white" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:iiv_color="@color/white"
+                        app:iiv_icon="faw-taxi" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -79,14 +78,13 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_weight="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="{faw_search}"
+                    <com.mikepenz.iconics.view.IconicsImageView
                         android:id="@+id/quick2"
-                        android:textSize="30sp"
-                        android:textColor="@color/white"
-                        android:layout_toRightOf="@id/quick1"/>
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_toRightOf="@id/quick1"
+                        app:iiv_color="@color/white"
+                        app:iiv_icon="faw-search" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,14 +101,13 @@
                     android:gravity="center"
                     android:id="@+id/additem"
                     android:layout_weight="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="{faw_cloud}"
+                    <com.mikepenz.iconics.view.IconicsImageView
                         android:id="@+id/quick3"
-                        android:textSize="30sp"
-                        android:textColor="@color/white"
-                        android:layout_toRightOf="@id/quick2"/>
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_toRightOf="@id/quick2"
+                        app:iiv_color="@color/white"
+                        app:iiv_icon="cmd-weather-pouring" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -127,13 +124,13 @@
                     android:gravity="center"
                     android:id="@+id/weather"
                     android:layout_weight="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="{faw_sun_o}"
-                        android:id="@+id/weather_icon"
-                        android:textSize="30sp"
-                        android:textColor="@color/white"/>
+                    <com.mikepenz.iconics.view.IconicsImageView
+                        android:id="@+id/quick4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_toRightOf="@id/quick3"
+                        app:iiv_color="@color/white"
+                        app:iiv_icon="cmd-weather-sunny" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
