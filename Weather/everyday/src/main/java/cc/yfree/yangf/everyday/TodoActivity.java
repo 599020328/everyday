@@ -144,6 +144,11 @@ public class TodoActivity extends AppCompatActivity {
     }
 
 
+    protected void onPause() {
+        TodoActivity.finish();
+        super.onPause();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

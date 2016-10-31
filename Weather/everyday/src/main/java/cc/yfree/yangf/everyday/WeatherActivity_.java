@@ -18,13 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
-import com.squareup.picasso.Picasso;
 
 import io.karim.MaterialTabs;
 
@@ -152,7 +150,10 @@ public class WeatherActivity_ extends AppCompatActivity {
 
     }
 
-
+    protected void onPause() {
+        WeatherActivity.finish();
+        super.onPause();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
