@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:id="@+id/poiName"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="地名"/>
+
+        <TextView
+            android:id="@+id/poiDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="14dp"
+            android:text="详情\n"
+            android:layout_below="@+id/poiName"/>
+
+        <LinearLayout
+            android:id="@+id/button_search"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/poiDetail">
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/toThere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="去 这 里"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/nearBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="搜 周 边"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="详 情"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>             <!--矢量图-->
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

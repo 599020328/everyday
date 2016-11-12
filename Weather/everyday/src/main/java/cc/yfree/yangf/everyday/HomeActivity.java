@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.baidu.mapapi.SDKInitializer;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.pkmmte.view.CircularImageView;
 import com.squareup.picasso.Picasso;
@@ -41,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         //图标支持
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
         HomeActivity = this;
         setContentView(R.layout.drawlayout_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -97,7 +99,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent mintent = new Intent();
-                mintent.setClass(HomeActivity.this, AnalyseActivity.class);
+                mintent.setClass(HomeActivity.this, RoutePlanningActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("activityName", "HomeActivity");
+
+                mintent.putExtras(bundle);
                 startActivity(mintent);
             }
         });
@@ -174,6 +180,7 @@ public class HomeActivity extends AppCompatActivity {
 //        //设置Adapter
 //        mRecyclerView.setAdapter(adapter);
     }
+
 
     @Override
     protected void onResume() {

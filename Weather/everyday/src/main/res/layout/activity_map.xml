@@ -14,7 +14,7 @@
         android:imeOptions="actionSearch"
         android:singleLine="true"
         android:drawableLeft="@drawable/ic_map_dehaze"
-        android:drawableRight="@drawable/ic_map_mic"
+        android:drawableRight="@drawable/ic_clear"
         android:drawablePadding="24dp"
         android:elevation="2dp"
         android:layout_marginLeft="8dp"
@@ -28,5 +28,88 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true"></com.baidu.mapapi.map.MapView>
+
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/mapView">
+
+        <TextView
+            android:id="@+id/poiName"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="地名"/>
+
+        <TextView
+            android:id="@+id/poiDistance"
+            android:layout_marginBottom="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="12dp"
+            android:text="距离"
+            android:layout_below="@+id/poiName"/>
+
+
+        <TextView
+            android:id="@+id/poiDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="14dp"
+            android:text="详情"
+            android:layout_below="@+id/poiDistance"/>
+
+        <LinearLayout
+            android:id="@+id/button_search"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_below="@+id/poiDetail">
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/toThere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft= "@drawable/ic_clear"
+                android:text="去 这 里"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/nearBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft= "@drawable/ic_clear"
+                android:text="搜 周 边"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>
+
+            <Button
+                android:background="@color/white"
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft= "@drawable/ic_format_list"
+                android:text="详 情"
+                android:textSize="12dp"
+                android:textColor="@color/gray"/>             <!--矢量图-->
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
