@@ -1,14 +1,18 @@
 package cc.yfree.yangf.everyday;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -19,15 +23,15 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.GroundOverlayOptions;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.map.PolygonOptions;
-import com.baidu.mapapi.map.Stroke;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.model.LatLngBounds;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,8 +40,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
+
+import static cc.yfree.yangf.everyday.R.id.relativeLayout;
 
 public class CarAndBus extends AppCompatActivity {
 
@@ -59,7 +63,7 @@ public class CarAndBus extends AppCompatActivity {
     int timeNo, weatherNo, temperatureLevel, PM;
     int areaNum[] = new int[67];
 
-    String ipAddress = "";
+    String ipAddress = "115.29.148.31";
     int portNum = 4700;
 
     private void InitMyLocation() {
@@ -69,7 +73,7 @@ public class CarAndBus extends AppCompatActivity {
         LocationClientOption option = new LocationClientOption();        //设置定位方式
         option.setOpenGps(true);   //打开GPS
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
-        option.setCoorType("bd09ll");         //坐标类型
+        option.setCoorType("BD09LL");         //坐标类型
         option.setScanSpan(10000);    //定位间隔
         option.setIsNeedAddress(true);
         option.setNeedDeviceDirect(true);
@@ -122,11 +126,14 @@ public class CarAndBus extends AppCompatActivity {
             MyLocationConfiguration config = new MyLocationConfiguration(mCurrentMode, true, mCurrentMarket);  //图标  是否允许显示方向  定位图层显示方式
             mBaiduMap.setMyLocationConfigeration(config);
 
+
+
             if(isFirstLoc)
             {
                 /*
                 *  定位地点为图标底部
                 * */
+                areaNo = FindArea();
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());  //定义坐标点
                 MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(ll, 19);  //设置地图中心和缩放级别，最高21
@@ -151,6 +158,10 @@ public class CarAndBus extends AppCompatActivity {
         mMapView = (MapView)findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMyLocationEnabled(true);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         if(Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, ACCESS_COARSE_LOCATION_REQUEST_CODE);
@@ -162,7 +173,7 @@ public class CarAndBus extends AppCompatActivity {
             InitMyLocation();
             InitOritationListener();
         }
-        areaNo = FindArea();
+
 
         FindTaxi(areaNo, timeNo, weatherNo, temperatureLevel, PM);
         FloatingActionButton car = (FloatingActionButton) findViewById(R.id.fab2);
@@ -170,10 +181,39 @@ public class CarAndBus extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (int j : areaNum) {
-                    drawAreaInMap(j);
+                    if(j == 0) {
+                        //
+                    } else {
+                        drawAreaInMap(j);
+                    }
                 }
+                LatLng ll = new LatLng(mCurrentLatitude, mCurrentLongitude);
+                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(ll, 14);
+                mBaiduMap.animateMapStatus(mapStatusUpdate);
             }
         });
+
+        FloatingActionButton loc = (FloatingActionButton) findViewById(R.id.fab1);
+        loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InitMyLocation();
+            }
+        });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        RelativeLayout la = (RelativeLayout) findViewById(relativeLayout);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if(la.getVisibility() == View.VISIBLE) {
+                la.setVisibility(View.GONE);
+            } else {
+                Intent intent = new Intent(CarAndBus.this, HomeActivity.class);
+                startActivity(intent);               //此处出现样式应设置为从左往右滑动！！！！！！！！！
+            }
+        }
+        return false;
     }
 
     private void FindTaxi(int areaNo, int timeNo, int weatherNo, int temperatureLevel, int pm) {
@@ -225,26 +265,31 @@ public class CarAndBus extends AppCompatActivity {
         if (drawCol != 0) {
             drawRow++;
         }
-        LatLng pt1 = new LatLng(lonS + (drawCol - 1) * addLon, latS + (drawRow - 1) * addLa);
-        LatLng pt2 = new LatLng(lonS + drawCol * addLon, latS + (drawRow - 1) * addLa);
-        LatLng pt3 = new LatLng(lonS + (drawCol - 1) * addLon, latS + drawRow * addLa);
-        LatLng pt4 = new LatLng(lonS + drawCol * addLon, latS + drawRow * addLa);
-        List<LatLng> pts = new ArrayList<LatLng>();
-        pts.add(pt1);
-        pts.add(pt2);
-        pts.add(pt3);
-        pts.add(pt4);
+        LatLng pt1 = new LatLng(latS + (drawRow - 1) * addLa, lonS + (drawCol - 1) * addLon);
+//        LatLng pt2 = new LatLng(latS + (drawRow - 1) * addLa, lonS + drawCol * addLon);
+//        LatLng pt3 = new LatLng(latS + drawRow * addLa, lonS + (drawCol - 1) * addLon);
+        LatLng pt4 = new LatLng(latS + drawRow * addLa, lonS + drawCol * addLon);
 
-        OverlayOptions polygonOption = new PolygonOptions()
-                .points(pts)
-                .stroke(new Stroke(4, 0xAA00FF00))
-                .fillColor(0xAA00FF00);
-        mBaiduMap.addOverlay(polygonOption);
+        LatLngBounds bounds = new LatLngBounds.Builder().include(pt1).include(pt4).build();
+
+        BitmapDescriptor bdGround = BitmapDescriptorFactory
+                .fromResource(R.mipmap.ground_overlay);
+
+        OverlayOptions ooGround = new GroundOverlayOptions()
+                .positionFromBounds(bounds).image(bdGround).transparency(0.8f);
+        mBaiduMap.addOverlay(ooGround);
+
+        MapStatusUpdate u = MapStatusUpdateFactory
+                .newLatLng(bounds.getCenter());
+        mBaiduMap.setMapStatus(u);
+
+        bdGround.recycle();
+
     }
 
-    double latS = 112.839149,latE = 112.962447,lonS = 27.840285,lonE = 27.928947;
+    double lonS = 112.839149, lonE= 112.962447, latS= 27.840285,latE = 27.928947;
     double addLa = (latE - latS) / 8;
-    double addLon = (lonS - lonE) / 8;
+    double addLon = (lonE - lonS) / 8;
     int row,col;
 
     private int FindArea() {
